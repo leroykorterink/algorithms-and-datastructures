@@ -7,6 +7,8 @@ namespace trees
     {
         public static void Main(string[] args)
         {
+            var binaryTree = BinaryTree<BinaryNode<int>>();
+            
         }
     }
 }
