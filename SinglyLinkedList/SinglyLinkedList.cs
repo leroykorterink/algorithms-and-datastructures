@@ -48,7 +48,7 @@ namespace SinglyLinkedList
         /// <param name="data"></param>
         private void Remove(object data)
         {
-            SinglyLinkedListIterator iterator = FindPrevious(data);
+            var iterator = FindPrevious(data);
 
             // There is nothing to remove
             if (iterator == null) return;

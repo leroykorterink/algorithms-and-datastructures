@@ -1,13 +1,13 @@
 ﻿using Xunit;
 
-namespace SinglyLinkedListTests
+namespace DoublyLinkedListTests
 {
     public class Tests
     {
         [Fact]
-        public void Should_ReturnTrue_When_SinglyLinkedListIsEmpty()
+        public void Should_ReturnTrue_When_DoublyLinkedListIsEmpty()
         {
-            var singlyLinkedList = new SinglyLinkedList.SinglyLinkedList();
+            var singlyLinkedList = new DoublyLinkedList.DoublyLinkedList();
 
             Assert.True(singlyLinkedList.IsEmpty());
         }
@@ -15,7 +15,7 @@ namespace SinglyLinkedListTests
         [Fact]
         public void Should_HaveHeadNode()
         {
-            var singlyLinkedList = new SinglyLinkedList.SinglyLinkedList();
+            var singlyLinkedList = new DoublyLinkedList.DoublyLinkedList();
 
             Assert.True(singlyLinkedList.Zeroth().Retrieve() == null);
         }
@@ -23,7 +23,7 @@ namespace SinglyLinkedListTests
         [Fact]
         public void Should_InsertANode()
         {
-            var singlyLinkedList = new SinglyLinkedList.SinglyLinkedList();
+            var singlyLinkedList = new DoublyLinkedList.DoublyLinkedList();
 
             // Add new node after the head node
             singlyLinkedList.Insert(5, singlyLinkedList.Zeroth());
@@ -34,7 +34,7 @@ namespace SinglyLinkedListTests
         [Fact]
         public void Should_BeEmpty_When_EmptyingList()
         {
-            var singlyLinkedList = new SinglyLinkedList.SinglyLinkedList();
+            var singlyLinkedList = new DoublyLinkedList.DoublyLinkedList();
 
             // Add new node after the head node
             singlyLinkedList.Insert(5, singlyLinkedList.Zeroth());
@@ -48,7 +48,7 @@ namespace SinglyLinkedListTests
         [Fact]
         public void Should_FindNodeMatchingGivenData()
         {
-            var singlyLinkedList = new SinglyLinkedList.SinglyLinkedList();
+            var singlyLinkedList = new DoublyLinkedList.DoublyLinkedList();
 
             const int data = 2;
 
@@ -63,7 +63,7 @@ namespace SinglyLinkedListTests
         [Fact]
         public void Should_FindNodePriorToNodeMatchingGivenData()
         {
-            var singlyLinkedList = new SinglyLinkedList.SinglyLinkedList();
+            var singlyLinkedList = new DoublyLinkedList.DoublyLinkedList();
 
             const int data = 2;
             const int prior = 1;

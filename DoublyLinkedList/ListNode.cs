@@ -2,7 +2,7 @@
 {
     public class ListNode
     {
-        private object Data;
+        public object Data;
 
         internal ListNode(object data = null, ListNode next = null)
         {
