@@ -2,24 +2,43 @@
 
 namespace SimpleArrayList
 {
-    interface ISimpleArrayList
+    internal interface ISimpleArrayList
     {
-        // Toevoegen aan het einde van de lijst, mits de lijst niet vol is
+        /// <summary>
+        /// Toevoegen aan het einde van de lijst, mits de lijst niet vol is
+        /// </summary>
+        /// <param name="n"></param>
         void Add(int n);
 
-        // Haal de waarde op van een bepaalde index
+        /// <summary>
+        /// Haal de waarde op van een bepaalde index
+        /// </summary>
+        /// <param name="index"></param>
+        /// <returns></returns>
         int Get(int index);
 
-        // Wijzig een item op een bepaalde index
+        /// <summary>
+        /// Wijzig een item op een bepaalde index
+        /// </summary>
+        /// <param name="index"></param>
+        /// <param name="number"></param>
         void Set(int index, int number);
 
-        // Print de inhoud van de list
+        /// <summary>
+        /// Print de inhoud van de list
+        /// </summary>
         void Print();
 
-        // Maak de list leeg
+        /// <summary>
+        /// Maak de list leeg
+        /// </summary>
         void Clear();
 
-        // Tel hoe vaak het gegeven getal voorkomt
+        /// <summary>
+        /// Tel hoe vaak het gegeven getal voorkomt
+        /// </summary>
+        /// <param name="number"></param>
+        /// <returns></returns>
         int CountOccurrences(int number);
     }
 }

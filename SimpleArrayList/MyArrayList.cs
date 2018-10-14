@@ -2,7 +2,7 @@ using System;
 
 namespace SimpleArrayList
 {
-    public partial class MyArrayList : ISimpleArrayList
+    public class MyArrayList : ISimpleArrayList
     {
         private int[] _listOfNumbers;
 
