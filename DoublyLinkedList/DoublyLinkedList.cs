@@ -17,12 +17,12 @@ namespace DoublyLinkedList
         }
 
         /// <summary>
-        /// Checks whether the DoublyLinkedList head emtpy
+        /// Checks whether the DoublyLinkedList head empty
         /// </summary>
         public bool IsEmpty() => _head.Next == _tail;
 
         /// <summary>
-        /// Checks whether DoublyLinkedList is emtpy
+        /// Checks whether DoublyLinkedList is empty
         /// </summary>
         public void MakeEmpty() => _head.Next = _tail;
 
@@ -98,7 +98,7 @@ namespace DoublyLinkedList
         {
             if (IsEmpty())
             {
-                Console.WriteLine("Current list is emtpy.");
+                Console.WriteLine("Current list is empty.");
                 return;
             }
 

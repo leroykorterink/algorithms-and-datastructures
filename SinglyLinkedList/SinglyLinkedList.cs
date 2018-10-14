@@ -7,12 +7,12 @@ namespace SinglyLinkedList
         private readonly ListNode _head = new ListNode();
 
         /// <summary>
-        /// Checks whether the SinglyLinkedList head emtpy
+        /// Checks whether the SinglyLinkedList head empty
         /// </summary>
         public bool IsEmpty() => _head.Next == null;
 
         /// <summary>
-        /// Checks whether SinglyLinkedList is emtpy
+        /// Checks whether SinglyLinkedList is empty
         /// </summary>
         public void MakeEmpty() => _head.Next = null;
 
@@ -88,7 +88,7 @@ namespace SinglyLinkedList
         {
             if (IsEmpty())
             {
-                Console.WriteLine("Current list is emtpy.");
+                Console.WriteLine("Current list is empty.");
                 return;
             }
 
