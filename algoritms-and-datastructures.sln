@@ -17,6 +17,12 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SimpleArrayList", "SimpleAr
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SimpleArrayListTests", "SimpleArrayListTests\SimpleArrayListTests.csproj", "{039134E9-001A-4C65-816D-25E4439E5105}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "opgaven-school", "opgaven-school", "{678B41A2-BEA6-46E3-A6D6-75ACD6610728}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SimpleLinkedList", "SimpleLinkedList\SimpleLinkedList.csproj", "{23AD1C79-8B06-4906-B13B-9CA832464969}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SimpleLinkedListTests", "SimpleLinkedListTests\SimpleLinkedListTests.csproj", "{C5A3B596-F5FF-493A-A2DE-1F2ACB3A2CFB}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -51,8 +57,22 @@ Global
 		{039134E9-001A-4C65-816D-25E4439E5105}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{039134E9-001A-4C65-816D-25E4439E5105}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{039134E9-001A-4C65-816D-25E4439E5105}.Release|Any CPU.Build.0 = Release|Any CPU
+		{23AD1C79-8B06-4906-B13B-9CA832464969}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{23AD1C79-8B06-4906-B13B-9CA832464969}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{23AD1C79-8B06-4906-B13B-9CA832464969}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{23AD1C79-8B06-4906-B13B-9CA832464969}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C5A3B596-F5FF-493A-A2DE-1F2ACB3A2CFB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C5A3B596-F5FF-493A-A2DE-1F2ACB3A2CFB}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C5A3B596-F5FF-493A-A2DE-1F2ACB3A2CFB}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C5A3B596-F5FF-493A-A2DE-1F2ACB3A2CFB}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{039134E9-001A-4C65-816D-25E4439E5105} = {678B41A2-BEA6-46E3-A6D6-75ACD6610728}
+		{E84D9A67-292B-4E96-825B-20DB64083CCA} = {678B41A2-BEA6-46E3-A6D6-75ACD6610728}
+		{23AD1C79-8B06-4906-B13B-9CA832464969} = {678B41A2-BEA6-46E3-A6D6-75ACD6610728}
+		{C5A3B596-F5FF-493A-A2DE-1F2ACB3A2CFB} = {678B41A2-BEA6-46E3-A6D6-75ACD6610728}
 	EndGlobalSection
 EndGlobal

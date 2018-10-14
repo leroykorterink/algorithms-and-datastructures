@@ -4,7 +4,7 @@ using SimpleArrayList;
 
 namespace SimpleArrayListTests
 {
-    public class UnitTest1
+    public class SimpleArrayListTests
     {
         [Fact]
         public void Should_AddGivenValueAddFirstEmptyLocation()
