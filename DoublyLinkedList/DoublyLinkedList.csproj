@@ -33,7 +33,7 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Compile Include="ListNode.cs" />
+    <Compile Include="DoublyLinkedListNode.cs" />
     <Compile Include="DoublyLinkedList.cs" />
     <Compile Include="DoublyLinkedListIterator.cs" />
   </ItemGroup>

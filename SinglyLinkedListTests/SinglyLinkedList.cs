@@ -30,6 +30,17 @@ namespace SinglyLinkedListTests
 
             Assert.True((int) singlyLinkedList.First().Retrieve() == 5);
         }
+        
+        [Fact]
+        public void Should_RemoveANode()
+        {
+            var singlyLinkedList = new SinglyLinkedList.SinglyLinkedList();
+
+            // Add new node after the head node
+            singlyLinkedList.Insert(5, singlyLinkedList.Zeroth());
+
+            Assert.True((int) singlyLinkedList.First().Retrieve() == 5);
+        }
 
         [Fact]
         public void Should_BeEmpty_When_EmptyingList()

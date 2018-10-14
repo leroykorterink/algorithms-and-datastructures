@@ -7,75 +7,75 @@ namespace DoublyLinkedListTests
         [Fact]
         public void Should_ReturnTrue_When_DoublyLinkedListIsEmpty()
         {
-            var singlyLinkedList = new DoublyLinkedList.DoublyLinkedList();
+            var doublyLinkedList = new DoublyLinkedList.DoublyLinkedList();
 
-            Assert.True(singlyLinkedList.IsEmpty());
+            Assert.True(doublyLinkedList.IsEmpty());
         }
 
         [Fact]
         public void Should_HaveHeadNode()
         {
-            var singlyLinkedList = new DoublyLinkedList.DoublyLinkedList();
+            var doublyLinkedList = new DoublyLinkedList.DoublyLinkedList();
 
-            Assert.True(singlyLinkedList.Zeroth().Retrieve() == null);
+            Assert.True(doublyLinkedList.Zeroth().Retrieve() == null);
         }
 
         [Fact]
         public void Should_InsertANode()
         {
-            var singlyLinkedList = new DoublyLinkedList.DoublyLinkedList();
+            var doublyLinkedList = new DoublyLinkedList.DoublyLinkedList();
 
             // Add new node after the head node
-            singlyLinkedList.Insert(5, singlyLinkedList.Zeroth());
+            doublyLinkedList.Insert(5, doublyLinkedList.Zeroth());
 
-            Assert.True((int) singlyLinkedList.First().Retrieve() == 5);
+            Assert.True((int) doublyLinkedList.First().Retrieve() == 5);
         }
 
         [Fact]
         public void Should_BeEmpty_When_EmptyingList()
         {
-            var singlyLinkedList = new DoublyLinkedList.DoublyLinkedList();
+            var doublyLinkedList = new DoublyLinkedList.DoublyLinkedList();
 
             // Add new node after the head node
-            singlyLinkedList.Insert(5, singlyLinkedList.Zeroth());
+            doublyLinkedList.Insert(5, doublyLinkedList.Zeroth());
 
-            // Empty list
-            singlyLinkedList.MakeEmpty();
+            // Empty listz
+            doublyLinkedList.MakeEmpty();
 
-            Assert.True(singlyLinkedList.First().Retrieve() == null);
+            Assert.True(doublyLinkedList.First().Retrieve() == null);
         }
 
         [Fact]
         public void Should_FindNodeMatchingGivenData()
         {
-            var singlyLinkedList = new DoublyLinkedList.DoublyLinkedList();
+            var doublyLinkedList = new DoublyLinkedList.DoublyLinkedList();
 
             const int data = 2;
 
             // Add new node after the head node
-            singlyLinkedList.Insert(3, singlyLinkedList.Zeroth());
-            singlyLinkedList.Insert(data, singlyLinkedList.Zeroth());
-            singlyLinkedList.Insert(1, singlyLinkedList.Zeroth());
+            doublyLinkedList.Insert(3, doublyLinkedList.Zeroth());
+            doublyLinkedList.Insert(data, doublyLinkedList.Zeroth());
+            doublyLinkedList.Insert(1, doublyLinkedList.Zeroth());
 
-            Assert.True((int) singlyLinkedList.Find(data).Retrieve() == data);
+            Assert.True((int) doublyLinkedList.Find(data).Retrieve() == data);
         }
 
         [Fact]
         public void Should_FindNodePriorToNodeMatchingGivenData()
         {
-            var singlyLinkedList = new DoublyLinkedList.DoublyLinkedList();
+            var doublyLinkedList = new DoublyLinkedList.DoublyLinkedList();
 
             const int data = 2;
             const int prior = 1;
 
             // Add new node after the head node
-            singlyLinkedList.Insert(3, singlyLinkedList.Zeroth());
-            singlyLinkedList.Insert(data, singlyLinkedList.Zeroth());
-            singlyLinkedList.Insert(prior, singlyLinkedList.Zeroth());
+            doublyLinkedList.Insert(3, doublyLinkedList.Zeroth());
+            doublyLinkedList.Insert(data, doublyLinkedList.Zeroth());
+            doublyLinkedList.Insert(prior, doublyLinkedList.Zeroth());
             
-            singlyLinkedList.Print();
+            doublyLinkedList.Print();
 
-            Assert.True((int) singlyLinkedList.FindPrevious(data).Retrieve() == prior);
+            Assert.True((int) doublyLinkedList.FindPrevious(data).Retrieve() == prior);
         }
     }
 }

@@ -2,11 +2,11 @@
 {
     public class DoublyLinkedListIterator
     {
-        public ListNode Current;
+        public DoublyLinkedListNode Current;
 
-        public DoublyLinkedListIterator(ListNode listNode)
+        public DoublyLinkedListIterator(DoublyLinkedListNode doublyLinkedListNode)
         {
-            Current = listNode;
+            Current = doublyLinkedListNode;
         }
 
         public bool IsValid => Current != null;

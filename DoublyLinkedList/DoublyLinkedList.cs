@@ -4,17 +4,27 @@ namespace DoublyLinkedList
 {
     public class DoublyLinkedList
     {
-        private readonly ListNode _head = new ListNode();
+        private readonly DoublyLinkedListNode _head = new DoublyLinkedListNode();
+        private readonly DoublyLinkedListNode _tail = new DoublyLinkedListNode(null);
+
+        public DoublyLinkedList()
+        {
+            _head.Next = _tail;
+            _head.Previous = _tail;
+            
+            _tail.Next = _head;
+            _tail.Previous = _head;
+        }
 
         /// <summary>
         /// Checks whether the DoublyLinkedList head emtpy
         /// </summary>
-        public bool IsEmpty() => _head.Next == null;
+        public bool IsEmpty() => _head.Next == _tail;
 
         /// <summary>
         /// Checks whether DoublyLinkedList is emtpy
         /// </summary>
-        public void MakeEmpty() => _head.Next = null;
+        public void MakeEmpty() => _head.Next = _tail;
 
         /// <summary>
         /// Return an iterator representing the header node
@@ -39,7 +49,7 @@ namespace DoublyLinkedList
             if (iterator?.Current == null) return;
 
             // Change current next property to the new ListNode 
-            iterator.Current.Next = new ListNode(data, iterator.Current.Next);
+            iterator.Current.Next = new DoublyLinkedListNode(data, iterator.Current.Next);
         }
 
         /// <summary>
