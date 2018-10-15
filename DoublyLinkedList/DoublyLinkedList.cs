@@ -104,7 +104,7 @@ namespace DoublyLinkedList
 
             var iterator = First();
 
-            for ( ; iterator.IsValid; iterator.Advance())
+            for ( ; iterator.IsValid(); iterator.Advance())
                 Console.Write(iterator.Retrieve() + ", ");
         }
     }

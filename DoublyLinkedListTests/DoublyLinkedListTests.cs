@@ -75,7 +75,7 @@ namespace DoublyLinkedListTests
             
             doublyLinkedList.Print();
 
-            Assert.True((int) doublyLinkedList.FindPrevious(data).Retrieve() == prior);
+            Assert.Equal(prior, doublyLinkedList.FindPrevious(data).Retrieve());
         }
     }
 }

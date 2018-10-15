@@ -9,13 +9,13 @@
             Current = listNode;
         }
 
-        public bool IsValid => Current != null;
+        public bool IsValid() => Current != null;
 
-        public object Retrieve() => IsValid ? Current.Data : null;
+        public object Retrieve() => IsValid() ? Current.Data : null;
 
         public void Advance()
         {
-            if (IsValid)
+            if (IsValid())
                 Current = Current.Next;
         }
     }
