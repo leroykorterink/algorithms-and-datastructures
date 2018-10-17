@@ -1,4 +1,4 @@
-using System;
+using InsertionSort;
 using Xunit;
 
 namespace InsertionSortTests
@@ -6,8 +6,25 @@ namespace InsertionSortTests
     public class InsertionSortTests
     {
         [Fact]
-        public void Test1()
+        public void Should_SortIntegersWithInsertionSort()
         {
+            var input = new[] {8, 5, 9, 2, 6, 3};
+            var sortedInput = new[] {2, 3, 5, 6, 8, 9};
+
+            var result = InsertionSort<int>.SortArray(input);
+
+            Assert.Equal(result, sortedInput);
+        }
+
+        [Fact]
+        public void Should_SortCharactersWithInsertionSort()
+        {
+            var input = new[] {'d', 'c', 'a', 'b', 'f'};
+            var sortedInput = new[] {'a', 'b', 'c', 'd', 'f'};
+
+            var result = InsertionSort<char>.SortArray(input);
+
+            Assert.Equal(result, sortedInput);
         }
     }
 }
