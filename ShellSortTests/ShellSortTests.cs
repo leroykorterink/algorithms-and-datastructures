@@ -12,9 +12,9 @@ namespace ShellSortTests
             var input = new[] {8, 5, 9, 2, 6, 3};
             var sortedInput = new[] {2, 3, 5, 6, 8, 9};
 
-            var result = ShellSort<int>.SortArray(input);
+            ShellSort<int>.SortArray(input);
 
-            Assert.Equal(result, sortedInput);
+            Assert.Equal(sortedInput, input);
         }
 
         [Fact]
@@ -23,9 +23,9 @@ namespace ShellSortTests
             var input = new[] {'d', 'c', 'a', 'b', 'f'};
             var sortedInput = new[] {'a', 'b', 'c', 'd', 'f'};
 
-            var result = ShellSort<char>.SortArray(input);
+            ShellSort<char>.SortArray(input);
 
-            Assert.Equal(result, sortedInput);
+            Assert.Equal(sortedInput, input);
         }
 
         [Fact]
@@ -34,9 +34,9 @@ namespace ShellSortTests
             var input = new[] {8, 5, 9, 2, 6, 3, 12, 13, 14, 15, 16, 17, 18};
             var sortedInput = new[] {2, 3, 5, 6, 8, 9, 12, 13, 14, 15, 16, 17, 18};
 
-            var result = ShellSort<int>.SortArray(input, 4);
+            ShellSort<int>.SortArray(input, 4);
 
-            Assert.Equal(result, sortedInput);
+            Assert.Equal(sortedInput, input);
         }
 
         [Fact]

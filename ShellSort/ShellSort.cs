@@ -9,12 +9,11 @@ namespace ShellSort
         /// </summary>
         /// <param name="input"></param>
         /// <param name="sequence"></param>
-        /// <returns></returns>
-        public static T[] SortArray(T[] input, double sequence = 2.2)
+        public static void SortArray(T[] input, double sequence = 2.2)
         {
             var initialSequence = input.Length / 2;
 
-            if (sequence > initialSequence)
+            if ((int) sequence > initialSequence)
                 throw new ArgumentException("`sequence` cannot be higher than the initial sequence (|input| / 2)");
 
             for (
@@ -38,8 +37,6 @@ namespace ShellSort
                     input[fromIndex] = currentElement;
                 }
             }
-
-            return input;
         }
     }
 }

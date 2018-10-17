@@ -4,7 +4,7 @@ namespace InsertionSort
 {
     public class InsertionSort<T> where T : IComparable
     {
-        public static T[] SortArray(T[] input)
+        public static void SortArray(T[] input)
         {
             for (var index = 1; index < input.Length; index++)
             {
@@ -20,8 +20,6 @@ namespace InsertionSort
 
                 input[fromIndex] = currentElement;
             }
-
-            return input;
         }
     }
 }
