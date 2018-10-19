@@ -1,6 +1,6 @@
 ﻿using System;
-using System.Collections.Generic;
 using InsertionSort;
+using SortingUtilities;
 
 namespace QuickSort
 {
@@ -25,19 +25,19 @@ namespace QuickSort
                 return;
             }
 
-            int middle = (low + high) / 2;
+            var middle = (low + high) / 2;
 
             if (input[middle].CompareTo(input[low]) < 0)
-                SwapReferences(input, low, middle);
+                Utilities.SwapReferences(input, low, middle);
 
             if (input[high].CompareTo(input[low]) < 0)
-                SwapReferences(input, low, high);
+                Utilities.SwapReferences(input, low, high);
 
             if (input[high].CompareTo(input[middle]) < 0)
-                SwapReferences(input, middle, high);
+                Utilities.SwapReferences(input, middle, high);
 
             // Place pivot at position high - 1
-            SwapReferences(input, middle, high - 1);
+            Utilities.SwapReferences(input, middle, high - 1);
             var pivot = input[high - 1];
 
             int i, j;
@@ -51,28 +51,14 @@ namespace QuickSort
                 if (i >= j)
                     break;
 
-                SwapReferences(input, i, j);
+                Utilities.SwapReferences(input, i, j);
             }
 
             // Restore pivot
-            SwapReferences(input, i, high - 1);
+            Utilities.SwapReferences(input, i, high - 1);
 
             SortArray(input, low, i - 1);
             SortArray(input, i + 1, high);
-        }
-
-        /// <summary>
-        /// Function to help us swap references in single dimension array
-        /// </summary>
-        /// <param name="input"></param>
-        /// <param name="a"></param>
-        /// <param name="b"></param>
-        private static void SwapReferences(IList<T> input, int a, int b)
-        {
-            var temporary = input[a];
-
-            input[a] = input[b];
-            input[b] = temporary;
         }
     }
 }

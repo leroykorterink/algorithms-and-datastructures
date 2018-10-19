@@ -6,6 +6,7 @@
 
     <ItemGroup>
       <ProjectReference Include="..\InsertionSort\InsertionSort.csproj" />
+      <ProjectReference Include="..\SortingUtilities\SortingUtilities.csproj" />
     </ItemGroup>
 
 </Project>
