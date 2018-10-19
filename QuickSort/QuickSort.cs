@@ -6,7 +6,7 @@ namespace QuickSort
 {
     public class QuickSort<T> where T : IComparable
     {
-        private const int Cutoff = 3;
+        private const int Cutoff = 2;
 
         /// <summary>
         /// QuickSort
@@ -25,27 +25,27 @@ namespace QuickSort
                 return;
             }
 
-            var middle = (low + high) / 2;
+            int middle = (low + high) / 2;
 
             if (input[middle].CompareTo(input[low]) < 0)
                 SwapReferences(input, low, middle);
 
             if (input[high].CompareTo(input[low]) < 0)
-                SwapReferences(input, low, middle);
+                SwapReferences(input, low, high);
 
-            if (input[low].CompareTo(input[middle]) < 0)
-                SwapReferences(input, low, middle);
+            if (input[high].CompareTo(input[middle]) < 0)
+                SwapReferences(input, middle, high);
 
             // Place pivot at position high - 1
             SwapReferences(input, middle, high - 1);
             var pivot = input[high - 1];
 
             int i, j;
-            for (i = low, j = high;;)
+            for (i = low, j = high - 1;;)
             {
-                while (input[i++].CompareTo(input[j--]) < 0)
+                while (input[++i].CompareTo(pivot) < 0)
                     ;
-                while (pivot.CompareTo(input[j--]) < 0)
+                while (pivot.CompareTo(input[--j]) < 0)
                     ;
 
                 if (i >= j)
