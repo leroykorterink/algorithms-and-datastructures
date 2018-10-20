@@ -22,15 +22,7 @@ namespace FirstChildNextSiblingTree
         {
             if (node == null) return 0;
 
-            var result = 1;
-
-            if (node.FirstChild != null)
-                result += Size(node.FirstChild);
-
-            if (node.NextSibling != null)
-                result += Size(node.NextSibling);
-
-            return result;
+            return 1 + Size(node.FirstChild) + Size(node.NextSibling);
         }
 
         /// <summary>
@@ -41,15 +33,7 @@ namespace FirstChildNextSiblingTree
         {
             if (node == null) return "";
 
-            var result = node.Data.ToString();
-
-            if (node.FirstChild != null)
-                result += $", {ToStringPreOrder(node.FirstChild)}";
-            
-            if (node.NextSibling != null)
-                result += $", {ToStringPreOrder(node.NextSibling)}";
-
-            return result;
+            return $"{node.Data}, {ToStringPreOrder(node.FirstChild) + ToStringPreOrder(node.NextSibling)}";
         }
     }
 }

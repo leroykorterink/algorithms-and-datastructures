@@ -38,7 +38,7 @@ namespace FirstChildNextSiblingTreeTests
 
             var firstChildNextSiblingTree = new FirstChildNextSiblingTree<int>(rootNode);
 
-            Assert.Equal("5, 1, 2, 3, 8, 10, 11, 12, 13, 14", firstChildNextSiblingTree.ToStringPreOrder());
+            Assert.Equal("5, 1, 2, 3, 8, 10, 11, 12, 13, 14, ", firstChildNextSiblingTree.ToStringPreOrder());
         }
 
         [Fact]
