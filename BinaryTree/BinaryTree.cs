@@ -59,6 +59,14 @@ namespace BinaryTree
             : "";
 
         /// <summary>
+        /// Creates a string of current tree post-order
+        /// </summary>
+        /// <returns></returns>
+        public override string ToString() => _rootNode != null
+            ? BinaryNode<T>.ToString(_rootNode)
+            : "";
+
+        /// <summary>
         /// Set root node to null
         /// </summary>
         public void MakeEmpty() => _rootNode = null;
@@ -99,10 +107,10 @@ namespace BinaryTree
         // methods here in a Console.WriteLine.
         [ExcludeFromCodeCoverage]
         public void PrintPreOrder() => Console.WriteLine(ToStringPreOrder());
-        
+
         [ExcludeFromCodeCoverage]
         public void PrintInOrder() => Console.WriteLine(ToStringInOrder());
-        
+
         [ExcludeFromCodeCoverage]
         public void PrintPostOrder() => Console.WriteLine(ToStringPostOrder());
     }

@@ -47,6 +47,14 @@ namespace BinaryTreeTests
         }
 
         [Fact]
+        public void Should_ToString()
+        {
+            var binaryTree = CreateBinaryTree();
+
+            Assert.Equal("[ [ [ NULL 4 NULL ] 2 [ NULL 5 NULL ] ] 1 [ NULL 3 NULL ] ]", binaryTree.ToString());
+        }
+        
+        [Fact]
         public void Should_PrintPreOrder()
         {
             var binaryTree = CreateBinaryTree();

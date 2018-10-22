@@ -11,7 +11,7 @@ namespace DoublyLinkedList
         {
             _head.Next = _tail;
             _head.Previous = _tail;
-            
+
             _tail.Next = _head;
             _tail.Previous = _head;
         }
@@ -104,7 +104,7 @@ namespace DoublyLinkedList
 
             var iterator = First();
 
-            for ( ; iterator.IsValid(); iterator.Advance())
+            for (; iterator.IsValid(); iterator.Advance())
                 Console.Write(iterator.Retrieve() + ", ");
         }
     }

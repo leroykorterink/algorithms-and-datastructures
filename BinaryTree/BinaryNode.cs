@@ -130,5 +130,21 @@ namespace BinaryTree
 
             return result;
         }
+
+        /// <summary>
+        /// Prints Left then Data then Right with brackets to easily identify nodes
+        /// </summary>
+        /// <returns></returns>
+        public static string ToString(BinaryNode<T> node)
+        {
+            if (node == null) return "NULL";
+
+            return string.Format(
+                "[ {0} {1} {2} ]",
+                node.Left != null ? ToString(node.Left) : "NULL",
+                node.Data,
+                node.Right != null ? ToString(node.Right) : "NULL"
+            );
+        }
     }
 }
