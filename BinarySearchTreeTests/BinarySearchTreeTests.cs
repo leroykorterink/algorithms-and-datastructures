@@ -1,20 +1,10 @@
 using BinarySearchTree;
-using System;
 using Xunit;
-using Xunit.Abstractions;
 
 namespace BinarySearchTreeTests
 {
     public class BinarySearchTreeTests
-    {
-        private readonly ITestOutputHelper _output;
-
-        public BinarySearchTreeTests(ITestOutputHelper output)
-        {
-            _output = output;
-        }
-
-        
+    {       
         private static BinarySearchTree<int> CreateTree()
         {
             var tree = new BinarySearchTree<int>();

@@ -1,0 +1,9 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+    <PropertyGroup>
+        <TargetFramework>netcoreapp2.0</TargetFramework>
+        <AssemblyName>PriorityQueue</AssemblyName>
+        <RootNamespace>PriorityQueue</RootNamespace>
+    </PropertyGroup>
+
+</Project>
