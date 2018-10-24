@@ -1,11 +1,13 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 
 namespace PriorityQueue
 {
     public class PriorityQueue<T> where T : IComparable
     {
-        private readonly List<T> _heap = new List<T>();
+        private const int DefaultSize = 100;
+        private readonly T[] _heap = new T[DefaultSize + 1];
         private int _currentSize;
 
         /// <summary>
@@ -36,7 +38,7 @@ namespace PriorityQueue
         /// </summary>
         /// <returns></returns>
         /// <exception cref="NoSuchElementException"></exception>
-        public T Element()
+        public T Peek()
         {
             if (IsEmpty())
                 throw new NoSuchElementException();
@@ -59,7 +61,7 @@ namespace PriorityQueue
         /// </summary>
         /// <param name="value"></param>
         /// <returns></returns>
-        public bool Add(T value)
+        public bool Enqueue(T value)
         {
             var hole = ++_currentSize;
             _heap[0] = value;
@@ -69,6 +71,8 @@ namespace PriorityQueue
 
             _heap[hole] = value;
 
+            PercolateDown(hole);
+
             return true;
         }
 
@@ -76,10 +80,10 @@ namespace PriorityQueue
         /// Removes the smallest item in the priority queue
         /// </summary>
         /// <returns></returns>
-        public T Remove()
+        public T Dequeue()
         {
             // Temporarily save the first element
-            var minItem = Element();
+            var minItem = Peek();
 
             // Remove first element from queue
             _heap[1] = _heap[_currentSize--];
@@ -128,21 +132,19 @@ namespace PriorityQueue
         /// Print priority queue pre-order
         /// </summary>
         /// <returns></returns>
-        public string ToStringPreOrder(int hole)
+        public string ToStringPreOrder(PriorityQueue<T> queue)
         {
-            if (hole > _currentSize) return "";
+            if (queue.IsEmpty()) return "";
 
-            var result = "";
+            var result = queue.Dequeue().ToString();
 
-            // First Data
-            result += _heap[hole];
-            result += " " + ToStringPreOrder((hole) * 2);
-            result += " " + ToStringPreOrder((hole - 1) * 2);
+            while (!queue.IsEmpty())
+                result += " " + queue.Dequeue().ToString();
 
             return result;
         }
 
-        public string ToStringPreOrder() => ToStringPreOrder(1);
+        public string ToStringPreOrder() => ToStringPreOrder(this);
     }
 
     #region Custom error classes
