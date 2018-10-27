@@ -8,13 +8,6 @@ namespace PriorityQueueTests
 {
     public class PriorityQueueTests
     {
-        private readonly ITestOutputHelper _output;
-
-        public PriorityQueueTests(ITestOutputHelper output)
-        {
-            _output = output;
-        }
-
         [Fact]
         public void Should_IsEmpty()
         {
@@ -65,8 +58,6 @@ namespace PriorityQueueTests
             var queue = new PriorityQueue<int>(new Collection<int>
                 {92, 47, 21, 20, 12, 25, 63, 61, 17, 55, 37, 45, 64, 83, 73});
 
-            _output.WriteLine(queue.ToStringPreOrder());
-            
             Assert.Equal(
                 "12 17 20 61 92 37 55 47 21 25 45 64 63 83 73 ",
                 queue.ToStringPreOrder()
@@ -79,8 +70,6 @@ namespace PriorityQueueTests
             var queue = new PriorityQueue<int>(new Collection<int>
                 {92, 47, 21, 20, 12, 25, 63, 61, 17, 55, 37, 45, 64, 83, 73});
             
-            _output.WriteLine(queue.ToStringPostOrder());
-
             Assert.Equal(
                 "61 92 20 55 47 37 17 45 64 25 83 73 63 21 12 ",
                 queue.ToStringPostOrder()
@@ -92,8 +81,6 @@ namespace PriorityQueueTests
         {
             var queue = new PriorityQueue<int>(new Collection<int>
                 {92, 47, 21, 20, 12, 25, 63, 61, 17, 55, 37, 45, 64, 83, 73});
-            
-            _output.WriteLine(queue.ToStringInOrder());
             
             Assert.Equal(
                 "61 20 92 17 55 37 47 12 45 25 64 21 83 63 73 ",
