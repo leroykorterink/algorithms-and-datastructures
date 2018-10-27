@@ -2,10 +2,10 @@ namespace Graph
 {
     public class Edge
     {
-        public IVertex Destination;
+        public Vertex Destination;
         public double Cost;
 
-        public Edge(IVertex destination, double cost)
+        public Edge(Vertex destination, double cost)
         {
             Destination = destination;
             Cost = cost;

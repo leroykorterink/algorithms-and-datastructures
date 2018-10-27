@@ -1,7 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Net.Http.Headers;
 using PriorityQueue;
 
 namespace Graph
@@ -18,7 +17,7 @@ namespace Graph
         /// </summary>
         /// <param name="vertexName"></param>
         /// <returns></returns>
-        public IVertex GetVertex(string vertexName)
+        public Vertex GetVertex(string vertexName)
         {
             if (VertexMap.TryGetValue(vertexName, out var vertex)) return vertex;
 
@@ -28,9 +27,15 @@ namespace Graph
             return vertex;
         }
 
+        /// <summary>
+        /// Adds a new edge to the current graph
+        /// </summary>
+        /// <param name="sourceVertexName"></param>
+        /// <param name="destinationVertexName"></param>
+        /// <param name="cost"></param>
         public void AddEdge(string sourceVertexName, string destinationVertexName, double cost)
         {
-            var sourceVertex = (Vertex) GetVertex(sourceVertexName);
+            var sourceVertex = GetVertex(sourceVertexName);
             var destinationVertex = GetVertex(destinationVertexName);
 
             sourceVertex.AdjacentVertices.Add(new Edge(destinationVertex, cost));
@@ -77,12 +82,6 @@ namespace Graph
             return $"(Cost is: {vertex.Distance}) {PathToString(vertex)}";
         }
 
-
-        public override string ToString()
-        {
-            throw new NotImplementedException();
-        }
-
         #region Shortest-path algorithms
 
         /// <summary>
@@ -106,13 +105,13 @@ namespace Graph
             while (queue.Count != 0)
             {
                 var currentVertex = queue.Dequeue();
-                
+
                 // Set visited to true so we can check if the graph is connected or not
                 currentVertex.Visited = true;
 
                 currentVertex.AdjacentVertices.ForEach(edge =>
                 {
-                    var adjacentVertex = (Vertex) edge.Destination;
+                    var adjacentVertex = edge.Destination;
 
                     if (adjacentVertex.Distance != Infinity) return;
 
@@ -124,6 +123,12 @@ namespace Graph
             }
         }
 
+        /// <summary>
+        /// Single-source weighted shortest-path algorithm
+        /// </summary>
+        /// <param name="startVertexName"></param>
+        /// <exception cref="NoSuchElementException"></exception>
+        /// <exception cref="GraphException"></exception>
         public void Dijkstra(string startVertexName)
         {
             ClearAll();
@@ -151,7 +156,7 @@ namespace Graph
 
                 vertex.AdjacentVertices.ForEach(edge =>
                 {
-                    var adjacentVertex = (Vertex) edge.Destination;
+                    var adjacentVertex = edge.Destination;
                     var edgeCost = edge.Cost;
 
                     if (edgeCost < 0)
@@ -171,16 +176,49 @@ namespace Graph
 
         #endregion
 
+        /// <summary>
+        /// Checks whether all vertices in this graph are connected
+        /// </summary>
+        /// <returns></returns>
         public bool IsConnected()
         {
-            Unweighted(VertexMap.First().Value.Name);            
-            
+            Unweighted(VertexMap.First().Value.Name);
+
             foreach (var vertex in VertexMap.Values)
                 // Return false when any vertex has not been visited
                 if (!vertex.Visited)
                     return false;
 
             return true;
+        }
+
+        /// <summary>
+        /// Prints vertex with its adjacent vertices
+        /// 
+        /// V0 --> V1(2) V3(1)
+        /// V1 --> V3(3) V4(10)
+        /// V2 --> V0(4) V5(5)
+        /// V3 --> V2(2) V5(8) V6(4) V4(2)
+        /// V4 --> V6(6)
+        /// V5 -->
+        /// V6 --> V5(1)
+        /// </summary>
+        /// <returns></returns>
+        public override string ToString()
+        {
+            var output = "";
+
+            foreach (var vertex in VertexMap.Values)
+            {
+                var adjacentVertexes = vertex.AdjacentVertices.Aggregate(
+                    "",
+                    (accumulator, edge) => { return accumulator += $"{edge.Destination.Name}({edge.Cost})"; }
+                );
+
+                output += vertex.Name + " --> " + adjacentVertexes;
+            }
+
+            return output;
         }
     }
 
