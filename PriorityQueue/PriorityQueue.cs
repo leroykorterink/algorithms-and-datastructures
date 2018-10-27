@@ -6,7 +6,7 @@ namespace PriorityQueue
 {
     public class PriorityQueue<T> where T : IComparable
     {
-        private T[] _heap;
+        public T[] _heap;
         private int _currentSize;
 
         /// <summary>
@@ -152,10 +152,12 @@ namespace PriorityQueue
         /// <returns></returns>
         public override string ToString()
         {
+            var heapCopy = new T[_currentSize];
+            Array.Copy(_heap, 1, heapCopy, 0, _currentSize);
+            
+            var queue = new PriorityQueue<T>(heapCopy);
             var processedQueue = "";
-
-            var queue = new PriorityQueue<T>(_heap);
-
+            
             while (!queue.IsEmpty())
                 processedQueue += queue.Dequeue() + " ";
 
@@ -172,7 +174,7 @@ namespace PriorityQueue
             if (index >= _currentSize)
                 return "";
 
-            var result = _heap[index] + " "; // Root
+            var result = _heap[index + 1] + " "; // Root
             result += ToStringPreOrder((2 * index) + 1); // Left subtree
             result += ToStringPreOrder((2 * index) + 2); // Right subtree
 
@@ -191,7 +193,7 @@ namespace PriorityQueue
 
             var result = ToStringPostOrder((2 * index) + 1); // Left subtree
             result += ToStringPostOrder((2 * index) + 2); // Right subtree
-            result += _heap[index] + " "; // Root
+            result += _heap[index + 1] + " "; // Root
 
             return result;
         }
@@ -207,7 +209,7 @@ namespace PriorityQueue
                 return "";
 
             var result = ToStringInOrder((2 * index) + 1); // Left subtree
-            result += _heap[index] + " "; // Root
+            result += _heap[index  + 1] + " "; // Root
             result += ToStringInOrder((2 * index) + 2); // Right subtree
 
             return result;

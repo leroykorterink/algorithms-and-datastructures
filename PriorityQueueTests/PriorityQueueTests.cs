@@ -40,16 +40,9 @@ namespace PriorityQueueTests
             var queue = new PriorityQueue<int>(new Collection<int>
                 {92, 47, 21, 20, 12, 25, 63, 61, 17, 55, 37, 45, 64, 83, 73});
 
-
-            var processedQueue = "";
-
-            while (!queue.IsEmpty())
-                processedQueue += queue.Dequeue() + " ";
-
-
             Assert.Equal(
                 "12 17 20 21 25 37 45 47 55 61 63 64 73 83 92 ",
-                processedQueue
+                queue.ToString()
             );
         }
 
@@ -60,13 +53,9 @@ namespace PriorityQueueTests
                 {92, 47, 21, 20, 12, 25, 63});
 
             queue.Enqueue(5);
-            _output.WriteLine(queue.ToStringPreOrder());
-
             Assert.Equal(5, queue.Dequeue());
 
             queue.Enqueue(15);
-            _output.WriteLine(queue.ToStringPreOrder());
-
             Assert.Equal(12, queue.Dequeue());
         }
 
@@ -77,9 +66,9 @@ namespace PriorityQueueTests
                 {92, 47, 21, 20, 12, 25, 63, 61, 17, 55, 37, 45, 64, 83, 73});
 
             _output.WriteLine(queue.ToStringPreOrder());
-
+            
             Assert.Equal(
-                "12 17 20 91 61 21 55 37 25 45 47 64 63 83 73",
+                "12 17 20 61 92 37 55 47 21 25 45 64 63 83 73 ",
                 queue.ToStringPreOrder()
             );
         }
@@ -89,11 +78,11 @@ namespace PriorityQueueTests
         {
             var queue = new PriorityQueue<int>(new Collection<int>
                 {92, 47, 21, 20, 12, 25, 63, 61, 17, 55, 37, 45, 64, 83, 73});
-
+            
             _output.WriteLine(queue.ToStringPostOrder());
 
             Assert.Equal(
-                "92 61 20 55 21 37 17 47 64 45 83 73 63 25 12 ",
+                "61 92 20 55 47 37 17 45 64 25 83 73 63 21 12 ",
                 queue.ToStringPostOrder()
             );
         }
@@ -101,19 +90,13 @@ namespace PriorityQueueTests
         [Fact]
         public void Should_ToStringInOrder()
         {
-            var hoi = new [] {92, 47, 21, 20, 12, 25, 63, 61, 17, 55, 37, 45, 64, 83, 73};
+            var queue = new PriorityQueue<int>(new Collection<int>
+                {92, 47, 21, 20, 12, 25, 63, 61, 17, 55, 37, 45, 64, 83, 73});
             
-            var queue = new PriorityQueue<int>();
-            var queue2 = new PriorityQueue<int>(hoi);
-
-            foreach (var i in hoi)
-                queue.Enqueue(i);
-
-            _output.WriteLine(queue.ToString());
-            _output.WriteLine(queue2.ToString());
-
+            _output.WriteLine(queue.ToStringInOrder());
+            
             Assert.Equal(
-                "92 20 61 17 55 21 37 12 47 45 64 25 83 63 73 ",
+                "61 20 92 17 55 37 47 12 45 25 64 21 83 63 73 ",
                 queue.ToStringInOrder()
             );
         }
@@ -122,8 +105,7 @@ namespace PriorityQueueTests
         public void Should_ToString()
         {
             var queue = new PriorityQueue<int>(new Collection<int>
-                {92, 47, 21, 20, 12, 25, 63, 61, 17, 55, 37, 45, 64, 83, 73});
-
+                {92, 47, 21, 20, 12, 25, 63, 61, 17, 55, 37, 45, 64, 83, 73});            
 
             Assert.Equal(
                 "12 17 20 21 25 37 45 47 55 61 63 64 73 83 92 ",
