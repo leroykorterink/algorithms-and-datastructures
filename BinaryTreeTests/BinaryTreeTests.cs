@@ -59,7 +59,7 @@ namespace BinaryTreeTests
         {
             var binaryTree = CreateBinaryTree();
 
-            Assert.Equal("12453", binaryTree.ToStringPreOrder());
+            Assert.Equal("1 2 4 5 3 ", binaryTree.ToStringPreOrder());
         }
 
         [Fact]
@@ -67,7 +67,7 @@ namespace BinaryTreeTests
         {
             var binaryTree = CreateBinaryTree();
 
-            Assert.Equal("42513", binaryTree.ToStringInOrder());
+            Assert.Equal("4 2 5 1 3 ", binaryTree.ToStringInOrder());
         }
 
         [Fact]
@@ -75,7 +75,7 @@ namespace BinaryTreeTests
         {
             var binaryTree = CreateBinaryTree();
 
-            Assert.Equal("45231", binaryTree.ToStringPostOrder());
+            Assert.Equal("4 5 2 3 1 ", binaryTree.ToStringPostOrder());
         }
 
         [Fact]
@@ -108,7 +108,7 @@ namespace BinaryTreeTests
 
             treeOne.Merge(3, treeOne, treeTwo);
 
-            Assert.Equal("312", treeOne.ToStringPreOrder());
+            Assert.Equal("3 1 2 ", treeOne.ToStringPreOrder());
 
             Assert.NotNull(treeOne.GetRoot());
             Assert.Null(treeTwo.GetRoot());

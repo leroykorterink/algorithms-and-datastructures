@@ -70,7 +70,7 @@ namespace BinaryTree
             var result = "";
 
             // First Data
-            result += node.Data;
+            result += node.Data + " ";
 
             // Then Left
             if (node.Left != null)
@@ -98,7 +98,7 @@ namespace BinaryTree
                 result += ToStringInOrder(node.Left);
 
             // Then Data
-            result += node.Data;
+            result += node.Data  + " ";
 
             // Then Right
             if (node.Right != null)
@@ -126,7 +126,7 @@ namespace BinaryTree
                 result += ToStringPostOrder(node.Right);
 
             // Then Data
-            result += node.Data.ToString();
+            result += node.Data + " ";
 
             return result;
         }
