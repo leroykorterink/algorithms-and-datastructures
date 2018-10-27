@@ -142,7 +142,7 @@ namespace GraphTests
             _output.WriteLine(myGraph.ToString());
 
             Assert.Equal(
-                "V0 --> V1(2) V3(1)\nV1 --> V3(3) V4(10)\nV2 --> V0(4) V5(5)\nV3 --> V2(2) V5(8) V6(4) V4(2)\nV4 --> V6(6)\nV5 -->\nV6 --> V5(1)\n",
+                "V0 --> V1(2) V3(1)\nV1 --> V3(3) V4(10)\nV3 --> V2(2) V4(2) V5(8) V6(4)\nV4 --> V6(6)\nV2 --> V0(4) V5(5)\nV5 -->\nV6 --> V5(1)\n",
                 myGraph.ToString()
             );
         }

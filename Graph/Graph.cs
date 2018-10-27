@@ -212,10 +212,10 @@ namespace Graph
             {
                 var adjacentVertexes = vertex.AdjacentVertices.Aggregate(
                     "",
-                    (accumulator, edge) => { return accumulator += $"{edge.Destination.Name}({edge.Cost})"; }
+                    (accumulator, edge) => { return accumulator += $" {edge.Destination.Name}({edge.Cost})"; }
                 );
 
-                output += vertex.Name + " --> " + adjacentVertexes;
+                output += $"{vertex.Name} -->{adjacentVertexes}\n";
             }
 
             return output;
