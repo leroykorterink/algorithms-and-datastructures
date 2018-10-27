@@ -6,8 +6,7 @@ namespace PriorityQueue
 {
     public class PriorityQueue<T> where T : IComparable
     {
-        private const int DefaultSize = 100;
-        private readonly T[] _heap = new T[DefaultSize + 1];
+        private T[] _heap;
         private int _currentSize;
 
         /// <summary>
@@ -15,6 +14,7 @@ namespace PriorityQueue
         /// </summary>
         public PriorityQueue()
         {
+            _heap = new T[2];
         }
 
 
@@ -25,6 +25,7 @@ namespace PriorityQueue
         public PriorityQueue(IReadOnlyCollection<T> collection)
         {
             _currentSize = collection.Count;
+            _heap = new T[_currentSize + 1];
 
             var i = 1;
             foreach (var element in collection)
@@ -53,6 +54,9 @@ namespace PriorityQueue
         public bool IsEmpty() =>
             _currentSize == 0;
 
+        /// <summary>
+        /// Sets the _currentSize to 0, this implies that the queue has been cleared.
+        /// </summary>
         public void Clear() =>
             _currentSize = 0;
 
@@ -63,6 +67,10 @@ namespace PriorityQueue
         /// <returns></returns>
         public bool Enqueue(T value)
         {
+            if (_currentSize + 1 == _heap.Length)
+                DoubleArray();
+
+            // Percolate up
             var hole = ++_currentSize;
             _heap[0] = value;
 
@@ -70,8 +78,6 @@ namespace PriorityQueue
                 _heap[hole] = _heap[hole / 2];
 
             _heap[hole] = value;
-
-            PercolateDown(hole);
 
             return true;
         }
@@ -82,11 +88,12 @@ namespace PriorityQueue
         /// <returns></returns>
         public T Dequeue()
         {
-            // Temporarily save the first element
             var minItem = Peek();
 
-            // Remove first element from queue
+            // Get rid of the last leaf/decrement
             _heap[1] = _heap[_currentSize--];
+
+            // Arrange the tree to fulfill the properties
             PercolateDown(1);
 
             return minItem;
@@ -129,22 +136,82 @@ namespace PriorityQueue
         }
 
         /// <summary>
-        /// Print priority queue pre-order
+        /// Double array to make sure we can insert more items
         /// </summary>
-        /// <returns></returns>
-        public string ToStringPreOrder(PriorityQueue<T> queue)
+        private void DoubleArray()
         {
-            if (queue.IsEmpty()) return "";
+            Array.Resize(ref _heap, _heap.Length * 2);
+        }
 
-            var result = queue.Dequeue().ToString();
+        /// <summary>
+        /// It's not possible to print a priority queue without from lowest to highest value without
+        /// dequeuing every value and thus emptying the queue. To work around this issue a new PriorityQueue instance
+        /// is created.
+        /// </summary>
+        /// <exception cref="InvalidOperationException"></exception>
+        /// <returns></returns>
+        public override string ToString()
+        {
+            var processedQueue = "";
+
+            var queue = new PriorityQueue<T>(_heap);
 
             while (!queue.IsEmpty())
-                result += " " + queue.Dequeue().ToString();
+                processedQueue += queue.Dequeue() + " ";
+
+            return processedQueue;
+        }
+
+        /// <summary>
+        /// Print PriorityQueue with pre-order traversal
+        /// </summary>
+        /// <param name="index"></param>
+        /// <returns></returns>
+        public string ToStringPreOrder(int index = 0)
+        {
+            if (index >= _currentSize)
+                return "";
+
+            var result = _heap[index] + " "; // Root
+            result += ToStringPreOrder((2 * index) + 1); // Left subtree
+            result += ToStringPreOrder((2 * index) + 2); // Right subtree
 
             return result;
         }
 
-        public string ToStringPreOrder() => ToStringPreOrder(this);
+        /// <summary>
+        /// Print PriorityQueue with pre-order traversal
+        /// </summary>
+        /// <param name="index"></param>
+        /// <returns></returns>
+        public string ToStringPostOrder(int index = 0)
+        {
+            if (index >= _currentSize)
+                return "";
+
+            var result = ToStringPostOrder((2 * index) + 1); // Left subtree
+            result += ToStringPostOrder((2 * index) + 2); // Right subtree
+            result += _heap[index] + " "; // Root
+
+            return result;
+        }
+
+        /// <summary>
+        /// Print PriorityQueue with pre-order traversal
+        /// </summary>
+        /// <param name="index"></param>
+        /// <returns></returns>
+        public string ToStringInOrder(int index = 0)
+        {
+            if (index >= _currentSize)
+                return "";
+
+            var result = ToStringInOrder((2 * index) + 1); // Left subtree
+            result += _heap[index] + " "; // Root
+            result += ToStringInOrder((2 * index) + 2); // Right subtree
+
+            return result;
+        }
     }
 
     #region Custom error classes
